@@ -1,0 +1,9 @@
+{{ define "title" }}
+    {{ humanize .Title }} // {{ .Site.Title }}
+{{ end }}
+{{ define "main" }}
+    {{ range .Paginator.Pages }}
+        {{ partial "post/summary.html" . }}
+    {{ end }}
+    {{ partial "pager.html" .Paginator }}
+{{ end }}

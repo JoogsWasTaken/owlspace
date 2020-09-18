@@ -1,0 +1,5 @@
+<footer id="footer">
+    {{ range $.Site.Data.footer.content }}
+        <div class="footer-info">{{ . | markdownify }}</div>
+    {{ end }}
+</footer>

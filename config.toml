@@ -1,0 +1,28 @@
+baseURL = "http://mywebsite.example/"
+title = "My website"
+theme = "owlspace"
+
+# Up to three posts per page.
+paginate = 3
+# Keep section titles as they are.
+pluralizeListTitles = false
+# Enable menu.
+sectionPagesMenu = "main"
+
+[params]
+  # Subheading under the page title.
+  subtitle = "So many cool things to show"
+
+[permalinks]
+  # Simple permalinks for all pages.
+  "/" = "/:section/:slug"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.extensions]
+      # Don't automatically convert links in text.
+      linkify = false
+
+  [markup.highlight]
+    # Enable custom syntax highlighting.
+    noClasses = false

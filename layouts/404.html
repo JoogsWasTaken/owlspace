@@ -1,0 +1,10 @@
+{{ define "title" }}
+    {{ "Not Found" }} // {{ .Site.Title }}
+{{ end }}
+{{ define "main" }}
+<div class="error">
+    <h1>404 - Not Found</h1>
+    <h2>Maybe you were looking for something else?</h2>
+    <p><a href="{{ .Site.BaseURL }}">Go back to the homepage</a></p>
+</div>
+{{ end }}

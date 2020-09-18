@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode | default "en" }}">
+    <head>
+        <meta charset="utf-8">
+        
+        <title>{{ block "title" . }}
+            // {{ .Site.Title }}
+        {{ end }}</title>
+
+        {{/* stylesheets */}}
+        {{ $css_options := (dict "targetPath" "css/style.css" "outputStyle" "compressed" "enableSourceMap" true) }}
+        {{ $style := resources.Get "sass/main.scss" | resources.ToCSS $css_options | resources.Fingerprint "sha384" }}
+        <link rel="stylesheet" href="{{ $style.Permalink }}" integrity="{{ $style.Data.Integrity }}">
+        {{ partial "custom_css.html" }}
+        {{/* for internal use */}}
+        {{ block "css" . }}{{ end }}
+
+        {{/* meta and seo */}}
+        <link rel="icon" href="{{ "/favicon.ico" | absURL }}">
+        <meta name="viewport" content="initial-scale=1,width=device-width">
+        {{ with .Site.Params.themeColor }}
+            <meta name="theme-color" content="{{ . }}">
+        {{ end }}
+        <meta name="color-scheme" content="dark">
+        {{ template "_internal/opengraph.html" . }}
+        {{ template "_internal/twitter_cards.html" . }}        
+    </head>
+    <body>
+        <script>
+            document.body.classList.add("js");
+        </script>
+        {{ partial "header.html" . }}
+        {{ partial "nav.html" . }}
+        <section class="body">
+            {{ block "main" . }}
+            {{ end }}
+        </section>
+        {{ partial "footer.html" . }}
+
+        {{/* scripts */}}
+        {{ $js_options := (dict "targetPath" "js/mobile-menu.js" "minify" true ) }}
+        {{ $js := resources.Get "js/mobile-menu.js" | js.Build $js_options | resources.Fingerprint "sha384" }}
+        <script src="{{ $js.Permalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
+
+        {{ partial "custom_js.html" }}
+        {{/* for internal use */}}
+        {{ block "js" . }}{{ end }}
+    </body>
+</html>

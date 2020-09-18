@@ -1,0 +1,27 @@
+{{ if gt .TotalPages 1 }}
+    <nav id="paginator" role="navigation">
+        <ul>
+            {{/*
+                for some reason calling .Next causes a runtime error due to
+                invalid memory address, but accessing previous and next page
+                through .Pagers works. this is jank but it'll do.
+            */}}
+            {{ $prev := sub .PageNumber 1 }}
+            {{ $next := add .PageNumber 1 }}
+            {{ if ge $prev 1 }}
+                <li><a rel="prev" href="{{ (index .Pagers (sub $prev 1)).URL | absURL }}">&lt;</a></li>
+            {{ else }}
+                {{ partial "page_empty.html" "&lt;" }}
+            {{ end }}
+            <li><a href="{{ .URL | absURL }}" class="current">{{ .PageNumber }}</a></li> 
+            {{ if le $next .TotalPages }}
+                <li><a rel="next" href="{{ (index .Pagers (add $prev 1)).URL | absURL }}">&gt;</a></li>
+            {{ else }}
+                {{ partial "page_empty.html" "&gt;" }}
+            {{ end }}
+        </ul>
+    </nav>
+{{ end }}
+{{ define "partials/page_empty.html" }}
+    <li><a aria-disabled="true" href="#" class="hidden">{{ . | htmlUnescape }}</a></li>
+{{ end }}

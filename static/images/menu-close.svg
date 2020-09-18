@@ -1,0 +1,26 @@
+<svg version="1.1" baseProfile="full" width="40" height="40" xmlns="http://www.w3.org/2000/svg">
+    
+        <rect x="5" y="5" width="6" height="6" fill="black" />
+        
+        <rect x="5" y="29" width="6" height="6" fill="black" />
+        
+    
+        <rect x="11" y="11" width="6" height="6" fill="black" />
+        
+        <rect x="11" y="23" width="6" height="6" fill="black" />
+        
+    
+        <rect x="17" y="17" width="6" height="6" fill="black" />
+        
+    
+        <rect x="23" y="23" width="6" height="6" fill="black" />
+        
+        <rect x="23" y="11" width="6" height="6" fill="black" />
+        
+    
+        <rect x="29" y="29" width="6" height="6" fill="black" />
+        
+        <rect x="29" y="5" width="6" height="6" fill="black" />
+        
+    
+</svg>

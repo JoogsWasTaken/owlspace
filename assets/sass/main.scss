@@ -1,0 +1,431 @@
+@import "owlspace-highlight";
+
+@font-face {
+    font-family: "Silkscreen";
+    font-weight: normal;
+    font-style: normal;
+    src: url("../fonts/slkscr.woff2") format("woff2"),
+        url("../fonts/slkscr.woff") formaT("woff");
+}
+
+@font-face {
+    font-family: "Cantarell";
+    font-weight: normal;
+    font-style: normal;
+    src: url("../fonts/cantarell-regular.woff2") format("woff2"),
+        url("../fonts/cantarell-regular.woff") format("woff"),
+        local("Cantarell");
+}
+
+@font-face {
+    font-family: "Cantarell";
+    font-weight: bold;
+    font-style: normal;
+    src: url("../fonts/cantarell-bold.woff2") format("woff2"),
+        url("../fonts/cantarell-bold.woff") format("woff"),
+        local("Cantarell");
+}
+
+@font-face {
+    font-family: "Fira Code";
+    font-weight: normal;
+    font-style: normal;
+    src: url("../fonts/FiraCode-Medium.woff2") format("woff2"),
+        url("../fonts/FiraCode-Medium.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Fira Code";
+    font-weight: bold;
+    font-style: normal;
+    src: url("../fonts/FiraCode-Bold.woff2") format("woff2"),
+        url("../fonts/FiraCode-Bold.woff") format("woff");
+}
+
+:root {
+    --accent-color-light: #ff3859;
+    --light-gray: #ccc;
+    --dark-gray: #666;
+    --header-height: 4.8em;
+}
+
+/* basic definitions */
+
+// set box model
+html {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+// background, size and font
+body {
+    background-color: black;
+    background-image: url("../images/bg.png");
+    background-repeat: repeat;
+    background-position: left -64px top -64px;
+    background-attachment: fixed;
+    color: white;
+
+    line-height: 1.5;
+    font-family: "Cantarell", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 0 auto;
+    max-width: 1024px;
+}
+
+// make links underline on hover
+a {
+    color: var(--accent-color-light);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+// apply padding to body
+.body {
+    padding: 0 1em;
+}
+
+// title font
+#banner, #menu, #paginator, h1, h2, h3, h4, h5, h6 {
+    font-family: "Silkscreen", 'Courier New', Courier, monospace;
+    font-weight: normal;
+    text-shadow: 1px 1px var(--dark-gray);
+    text-transform: uppercase;
+}
+
+// code font
+code {
+    font-family: "Fira Code", 'Courier New', Courier, monospace;
+}
+
+// mix in with rest of the text
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+    color: white;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+}
+
+h4 {
+    font-size: 1.125rem;
+}
+
+h5 {
+    font-size: 1.0625rem;
+}
+
+h6 {
+    font-size: 1rem;
+}
+
+// adjust lists nested inside navigation
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* site banner */
+
+#banner {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    min-height: var(--header-height);
+}
+
+#banner * {
+    margin: 0;
+}
+
+#banner .page-subtitle {
+    color: var(--light-gray);
+}
+
+/* main menu */
+
+#menu {
+    background-color: white;
+    overflow-y: auto;
+    white-space: nowrap;
+
+    ul li {
+        // every element should have .5em space
+        display: inline-block;
+        margin: .5em;
+        margin-right: 0;
+
+        a {
+            padding: .5em 1em;
+            display: inline-block;
+            color: black;
+            text-decoration: none;
+
+            &:hover, &.current {
+                background-color: black;
+                color: white;
+            }
+        }
+    }
+
+    // menu buttons (hidden by default)
+    #menu-burger {
+        display: none;
+        height: calc(var(--header-height) + 1em);
+        transform: translateX(-70px);
+    
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -webkit-user-select: none;
+        user-select: none;
+    
+        .menu-button {
+            cursor: pointer;
+            background-color: white;
+            padding: .5em;
+    
+            img {
+                filter: drop-shadow(2px 2px 0px var(--light-gray));
+                transform: scale(.8, .8) translateY(2px);
+            }
+        }
+    
+        #menu-open {
+            padding-right: 1em;
+        }
+    
+        #menu-close {
+            padding-left: 1em;
+        }
+    }
+}
+
+@media screen and (max-width: 576px) {
+
+    // styles for when js is available
+    .js {
+
+        // make menu disappear to the right
+        #menu {
+            position: fixed;
+            top: 0;
+            left: 100%;
+            width: 100%;
+            height: 100%;
+
+            overflow-y: initial;
+
+            transform: translateX(0%);
+            transition: transform .5s ease, opacity .5s ease;
+        
+            // every menu item is its own block
+            ul li {
+                display: block;
+            }
+
+            // center vertically
+            #menu-burger {
+                display: flex;
+                align-items: center;
+
+                .menu-button {
+                    display: inline-block;
+                }
+            }
+        }
+
+        // styles for when menu is expanded
+        &.expanded {
+            overflow-y: hidden;
+
+            // slide menu out
+            #menu {
+                transform: translateX(-100%);
+            }
+        }
+
+        // prevent header text from being obfuscated
+        #banner {
+            padding-right: 5em;
+        }
+    }
+
+}
+
+/* pagination */
+
+#paginator {
+    text-align: center;
+    margin: 2em 0;
+
+    ul li {
+        display: inline-block;
+        margin: 0 .5em;
+
+        a {
+            padding: 0 .4em;
+            border: 8px solid white;
+            display: inline-block;
+            color: black;
+            background-color: white;
+            text-decoration: none;
+            min-width: 40px;
+
+            &.hidden {
+                opacity: .2;
+                pointer-events: none;
+            }
+
+            &:hover {
+                background-color: black;
+                color: white;
+            }
+        }
+    }
+}
+
+/* footer */
+
+#footer {
+    margin-top: 2em;
+    margin-bottom: 2em;
+    display: flex;
+    font-size: small;
+    text-align: center;
+    align-items: center;
+}
+
+#footer div {
+    flex: 1 0 0;
+    padding: 0 2em;
+    margin: .5em 0;
+}
+
+@media screen and (max-width: 576px) {
+
+    #footer {
+        flex-direction: column;
+    }
+
+}
+
+/* post blog formatting */
+article {
+
+    // footer and tags should be small
+    footer, .article-metadata {
+        font-size: small;
+    }
+
+    // remove spacing from title to footer
+    header h2 {
+        margin-bottom: 0;
+    }
+
+    // noscript message
+    #noscript {
+        margin: 2em 0;
+        background-color: white;
+        color: black;
+        padding: 8px;
+        font-size: small;
+    }
+    
+    #noscript p {
+        margin: 0;
+    }
+
+    // make code smaller than the main text
+    code {
+        font-size: small;
+    }
+
+    // make overflowing equations scrollable
+    .katex-display {
+        overflow-x: auto;
+    }
+
+    // code highlighting
+    .highlight {
+        margin: 1em 0;
+
+        pre {
+            padding: 8px;
+            overflow-x: auto; // no line wraps
+        }
+    }
+
+    // tables
+    table {
+        margin: 0 auto;
+        background: white;
+        color: black;
+        border: 2px solid white;
+
+        // make rows white on black
+        tr td {
+            background: black;
+            color: white;
+        }
+
+        // apply padding to cells
+        th, td {
+            padding: 2px 8px;
+            border: 2px solid white;
+        }
+    }
+
+    // groups of images
+    figure {
+        text-align: center;
+        background-color: white;
+        color: black;
+        padding: 1em;
+        margin: 1em auto;
+        max-width: 100%;
+        display: table;
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        figcaption {
+            font-size: small;
+            margin-top: .5em;
+
+            p {
+                margin: 0;
+            }
+        }
+    }
+
+}
+
+.error {
+
+    text-align: center;
+    margin: 2em 0 3em;
+
+    h2 {
+        color: var(--light-gray);
+    }
+
+    p {
+        margin-top: 2em;
+    }
+
+}
