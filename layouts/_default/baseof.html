@@ -9,7 +9,7 @@
 
         {{/* stylesheets */}}
         {{ $css_options := (dict "targetPath" "css/style.css" "outputStyle" "compressed" "enableSourceMap" true) }}
-        {{ $style := resources.Get "sass/main.scss" | resources.ToCSS $css_options | resources.Fingerprint "sha384" }}
+        {{ $style := resources.Get "sass/main.scss" | resources.ToCSS $css_options | resources.Fingerprint "sha512" }}
         <link rel="stylesheet" href="{{ $style.Permalink }}" integrity="{{ $style.Data.Integrity }}">
         {{ partial "custom_css.html" }}
         {{/* for internal use */}}
@@ -39,7 +39,7 @@
 
         {{/* scripts */}}
         {{ $js_options := (dict "targetPath" "js/mobile-menu.js" "minify" true ) }}
-        {{ $js := resources.Get "js/mobile-menu.js" | js.Build $js_options | resources.Fingerprint "sha384" }}
+        {{ $js := resources.Get "js/mobile-menu.js" | js.Build $js_options | resources.Fingerprint "sha512" }}
         <script src="{{ $js.Permalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
 
         {{ partial "custom_js.html" }}
