@@ -4,7 +4,7 @@
         background-color: #fff;
     }
 
-    .cm, .cp, .c1, .cs, .sd {
+    .cm, .cp, .c1, .cs, .sd, .lnt {
         color: #999;
     }
 
@@ -14,5 +14,9 @@
 
     .l, .ld, .m, .mf, .mh, .mi, .mo, .il, .s, .sb, .sc, .s2, .se, .sh, .si, .sx, .sr, .s1, .ss {
         color: #ff3859;
+    }
+
+    .lntable {
+        background-color: white;
     }
 }

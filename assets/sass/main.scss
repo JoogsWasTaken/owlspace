@@ -117,18 +117,10 @@ h2 {
 }
 
 h3 {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
 }
 
-h4 {
-    font-size: 1.125rem;
-}
-
-h5 {
-    font-size: 1.0625rem;
-}
-
-h6 {
+h4, h5, h6 {
     font-size: 1rem;
 }
 
@@ -326,26 +318,26 @@ nav ul {
 article {
 
     // footer and tags should be small
-    footer, .article-metadata {
+    > footer, > .article-metadata {
         font-size: small;
     }
 
     // remove spacing from title to footer
-    header h2 {
+    > header h2 {
         margin-bottom: 0;
     }
 
     // noscript message
-    #noscript {
+    > #noscript {
         margin: 2em 0;
         background-color: white;
         color: black;
         padding: 8px;
         font-size: small;
-    }
-    
-    #noscript p {
-        margin: 0;
+
+        p {
+            margin: 0;
+        }
     }
 
     // make code smaller than the main text
@@ -354,22 +346,38 @@ article {
     }
 
     // make overflowing equations scrollable
-    .katex-display {
+    > .katex-display {
         overflow-x: auto;
     }
 
     // code highlighting
-    .highlight {
+    > .highlight {
+        // scrollable overflow
         margin: 1em 0;
-
+        overflow-x: auto;
+    
         pre {
             padding: 8px;
-            overflow-x: auto; // no line wraps
+            margin: 0;
+            // doubling overflow-x works both with and without line numbers
+            // (someone please enlighten me)
+            overflow-x: auto;
         }
+    
+        // support for linenos
+        table {
+            width: 100%;
+    
+            td, pre {
+                // just to be safe here
+                border: none;
+            }
+        }
+    
     }
 
     // tables
-    table {
+    > table {
         margin: 0 auto;
         background: white;
         color: black;
@@ -389,7 +397,7 @@ article {
     }
 
     // groups of images
-    figure {
+    > figure {
         text-align: center;
         background-color: white;
         color: black;
@@ -415,8 +423,11 @@ article {
 
 }
 
+/* 404 page */
+
 .error {
 
+    // make everything centered
     text-align: center;
     margin: 2em 0 3em;
 
