@@ -1,7 +1,9 @@
 {{ define "main" }}
-    {{ $paginator := .Paginate (where .Site.RegularPages "Section" "!=" "") }}
-    {{ range $paginator.Pages }}
-        {{ partial "post/summary.html" . }}
-    {{ end }}
-    {{ partial "pager.html" $paginator }}
+    <section class="body">
+        {{ $paginator := .Paginate (where .Site.RegularPages "Section" "!=" "") }}
+        {{ range $paginator.Pages }}
+            {{ partial "post/summary.html" . }}
+        {{ end }}
+        {{ partial "pager.html" $paginator }}
+    </section>
 {{ end }}

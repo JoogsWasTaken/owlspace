@@ -31,10 +31,8 @@
         </script>
         {{ partial "header.html" . }}
         {{ partial "nav.html" . }}
-        <section class="body">
-            {{ block "main" . }}
-            {{ end }}
-        </section>
+        {{ block "main" . }}
+        {{ end }}
         {{ partial "footer.html" . }}
 
         {{/* scripts */}}

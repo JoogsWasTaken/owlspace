@@ -2,18 +2,20 @@
     {{ .Title }} // {{ .Site.Title }}
 {{ end }}
 {{ define "main" }}
-    <article>
-        {{ if $.Param "needsjs" }}
-            {{ with $.Site.Params.noscript }}
-                <noscript><div id="noscript"><p>{{ . | markdownify }}</p></div></noscript>
+    <section class="body">
+        <article>
+            {{ if $.Param "needsjs" }}
+                {{ with $.Site.Params.noscript }}
+                    <noscript><div id="noscript"><p>{{ . | markdownify }}</p></div></noscript>
+                {{ end }}
             {{ end }}
-        {{ end }}
-        {{ partial "post/header.html" . }}
-        {{ if .Section }}
-            {{ partial "post/footer.html" . }}
-        {{ end }}
-        {{ .Content }}
-    </article>
+            {{ partial "post/header.html" . }}
+            {{ if .Section }}
+                {{ partial "post/footer.html" . }}
+            {{ end }}
+            {{ .Content }}
+        </article>
+    </section>
 {{ end }}
 {{ define "css" }}
     {{ if $.Param "katex" }}
