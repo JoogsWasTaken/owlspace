@@ -11,6 +11,9 @@
         {{ with partial "func/PipeSCSS.html" "main" }}
             <link rel="stylesheet" href="{{ .Permalink }}" integrity="{{ .Data.Integrity }}" media="all">
         {{ end }}
+        {{ with partial "func/PipeSCSS.html" "main-small" }}
+            <link rel="stylesheet" href="{{ .Permalink }}" integrity="{{ .Data.Integrity }}" media="all and (max-width: 576px)">
+        {{ end }}
         
         {{ partial "custom_css.html" }}
         {{/* for internal use */}}
