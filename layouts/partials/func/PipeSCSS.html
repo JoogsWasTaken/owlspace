@@ -1,0 +1,5 @@
+{{ $in_path := printf "sass/%s.scss" . }}
+{{ $out_path := printf "css/%s.css" . }}
+{{ $css_options := (dict "targetPath" $out_path "outputStyle" "compressed" "enableSourceMap" true) }}
+{{ $style := resources.Get $in_path | resources.ToCSS $css_options | resources.Fingerprint "sha256" }}
+{{ return $style }}

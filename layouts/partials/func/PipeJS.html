@@ -1,0 +1,4 @@
+{{ $path := printf "js/%s.js" . }}
+{{ $js_options := (dict "targetPath" $path "minify" true ) }}
+{{ $js := resources.Get $path | js.Build $js_options | resources.Fingerprint "sha256" }}
+{{ return $js }}
