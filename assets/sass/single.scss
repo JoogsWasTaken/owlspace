@@ -1,0 +1,97 @@
+@import "_vars";
+@import "highlight";
+
+/* styles that only apply to single pages */
+
+article {
+
+    // noscript message
+    > #noscript {
+        margin: 2em 0;
+        background-color: white;
+        color: black;
+        padding: 8px;
+        font-size: small;
+
+        p {
+            margin: 0;
+        }
+    }
+
+    // make overflowing equations scrollable
+    > .katex-display {
+        overflow-x: auto;
+    }
+
+    // code highlighting
+    > .highlight {
+        // scrollable overflow
+        margin: 1em 0;
+        overflow-x: auto;
+    
+        pre {
+            padding: 8px;
+            margin: 0;
+            // doubling overflow-x works both with and without line numbers
+            // (someone please enlighten me)
+            overflow-x: auto;
+        }
+    
+        // support for linenos
+        table {
+            width: 100%;
+    
+            td, pre {
+                // just to be safe here
+                border: none;
+            }
+        }
+    
+    }
+
+    // tables
+    > table {
+        margin: 0 auto;
+        background: white;
+        color: black;
+        border: 2px solid white;
+
+        // make rows white on black
+        tr td {
+            background: black;
+            color: white;
+        }
+
+        // apply padding to cells
+        th, td {
+            padding: 2px 8px;
+            border: 2px solid white;
+        }
+    }
+
+    // groups of images
+    > figure {
+        text-align: center;
+        background-color: white;
+        color: black;
+        padding: 1em;
+        margin: 1em auto;
+        max-width: 100%;
+        display: table;
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        figcaption {
+            font-size: small;
+            margin-top: .5em;
+
+            p {
+                margin: 0;
+            }
+        }
+    }
+
+}

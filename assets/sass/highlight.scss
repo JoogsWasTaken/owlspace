@@ -1,3 +1,5 @@
+@import "_vars";
+
 .highlight {
     pre {
         color: #000;
@@ -5,7 +7,7 @@
     }
 
     .cm, .cp, .c1, .cs, .sd, .lnt {
-        color: #999;
+        color: $gray;
     }
 
     .k, .kc, .kd, .kn, .kp, .kr, .kt {
@@ -13,7 +15,7 @@
     }
 
     .l, .ld, .m, .mf, .mh, .mi, .mo, .il, .s, .sb, .sc, .s2, .se, .sh, .si, .sx, .sr, .s1, .ss {
-        color: #ff3859;
+        color: $accent;
     }
 
     .lntable {

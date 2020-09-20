@@ -1,0 +1,33 @@
+@import "_vars";
+
+/* pagination */
+
+#paginator {
+    text-align: center;
+    margin: 2em 0;
+
+    ul li {
+        display: inline-block;
+        margin: 0 .5em;
+
+        a {
+            padding: 0 .4em;
+            border: 8px solid white;
+            display: inline-block;
+            color: black;
+            background-color: white;
+            text-decoration: none;
+            min-width: 40px;
+
+            &.hidden {
+                opacity: .2;
+                pointer-events: none;
+            }
+
+            &:hover {
+                background-color: black;
+                color: white;
+            }
+        }
+    }
+}

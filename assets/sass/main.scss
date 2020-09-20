@@ -1,4 +1,6 @@
-@import "owlspace-highlight";
+@import "_vars";
+
+/* font setup */
 
 @font-face {
     font-family: "Silkscreen";
@@ -49,13 +51,6 @@
         url("../fonts/FiraCode-Bold.woff") format("woff");
 }
 
-:root {
-    --accent-color-light: #ff3859;
-    --light-gray: #ccc;
-    --dark-gray: #666;
-    --header-height: 4.8em;
-}
-
 /* basic definitions */
 
 // set box model
@@ -84,7 +79,7 @@ body {
 
 // make links underline on hover
 a {
-    color: var(--accent-color-light);
+    color: $accent;
     text-decoration: none;
 }
 
@@ -101,7 +96,7 @@ a:hover {
 #banner, #menu, #paginator, h1, h2, h3, h4, h5, h6 {
     font-family: "Silkscreen", 'Courier New', Courier, monospace;
     font-weight: normal;
-    text-shadow: 1px 1px var(--dark-gray);
+    text-shadow: 1px 1px $darkGray;
     text-transform: uppercase;
 }
 
@@ -115,6 +110,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
     color: white;
 }
 
+// header size defs
 h1 {
     font-size: 2rem;
 }
@@ -143,15 +139,15 @@ nav ul {
 #banner {
     margin-top: 1em;
     margin-bottom: 1em;
-    min-height: var(--header-height);
-}
+    min-height: $headerHeight;
 
-#banner * {
-    margin: 0;
-}
+    * {
+        margin: 0;
+    }
 
-#banner .page-subtitle {
-    color: var(--light-gray);
+    .page-subtitle {
+        color: $lightGray;
+    }
 }
 
 /* main menu */
@@ -183,7 +179,7 @@ nav ul {
     // menu buttons (hidden by default)
     #menu-burger {
         display: none;
-        height: calc(var(--header-height) + 1em);
+        height: calc(#{$headerHeight} + 1em);
         transform: translateX(-70px);
     
         -moz-user-select: none;
@@ -197,7 +193,7 @@ nav ul {
             padding: .5em;
     
             img {
-                filter: drop-shadow(2px 2px 0px var(--light-gray));
+                filter: drop-shadow(2px 2px 0px $lightGray);
                 transform: scale(.8, .8) translateY(2px);
             }
         }
@@ -264,38 +260,6 @@ nav ul {
 
 }
 
-/* pagination */
-
-#paginator {
-    text-align: center;
-    margin: 2em 0;
-
-    ul li {
-        display: inline-block;
-        margin: 0 .5em;
-
-        a {
-            padding: 0 .4em;
-            border: 8px solid white;
-            display: inline-block;
-            color: black;
-            background-color: white;
-            text-decoration: none;
-            min-width: 40px;
-
-            &.hidden {
-                opacity: .2;
-                pointer-events: none;
-            }
-
-            &:hover {
-                background-color: black;
-                color: white;
-            }
-        }
-    }
-}
-
 /* footer */
 
 #footer {
@@ -334,98 +298,9 @@ article {
         margin-bottom: 0;
     }
 
-    // noscript message
-    > #noscript {
-        margin: 2em 0;
-        background-color: white;
-        color: black;
-        padding: 8px;
-        font-size: small;
-
-        p {
-            margin: 0;
-        }
-    }
-
     // make code smaller than the main text
     code {
         font-size: small;
-    }
-
-    // make overflowing equations scrollable
-    > .katex-display {
-        overflow-x: auto;
-    }
-
-    // code highlighting
-    > .highlight {
-        // scrollable overflow
-        margin: 1em 0;
-        overflow-x: auto;
-    
-        pre {
-            padding: 8px;
-            margin: 0;
-            // doubling overflow-x works both with and without line numbers
-            // (someone please enlighten me)
-            overflow-x: auto;
-        }
-    
-        // support for linenos
-        table {
-            width: 100%;
-    
-            td, pre {
-                // just to be safe here
-                border: none;
-            }
-        }
-    
-    }
-
-    // tables
-    > table {
-        margin: 0 auto;
-        background: white;
-        color: black;
-        border: 2px solid white;
-
-        // make rows white on black
-        tr td {
-            background: black;
-            color: white;
-        }
-
-        // apply padding to cells
-        th, td {
-            padding: 2px 8px;
-            border: 2px solid white;
-        }
-    }
-
-    // groups of images
-    > figure {
-        text-align: center;
-        background-color: white;
-        color: black;
-        padding: 1em;
-        margin: 1em auto;
-        max-width: 100%;
-        display: table;
-
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        figcaption {
-            font-size: small;
-            margin-top: .5em;
-
-            p {
-                margin: 0;
-            }
-        }
     }
 
 }
@@ -439,7 +314,7 @@ article {
     margin: 2em 0 3em;
 
     h2 {
-        color: var(--light-gray);
+        color: $lightGray;
     }
 
     p {
