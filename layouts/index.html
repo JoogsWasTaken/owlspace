@@ -7,3 +7,8 @@
         {{ partial "pager.html" $paginator }}
     </section>
 {{ end }}
+{{ define "css" }}
+    {{ with partial "func/PipeSCSS.html" "list" }}
+        <link rel="stylesheet" href="{{ .Permalink }}" integrity="{{ .Data.Integrity }}" media="all">
+    {{ end }}
+{{ end }}
