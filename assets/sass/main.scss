@@ -4,6 +4,7 @@
     font-family: "Silkscreen";
     font-weight: normal;
     font-style: normal;
+    font-display: swap;
     src: url("../fonts/slkscr.woff2") format("woff2"),
         url("../fonts/slkscr.woff") formaT("woff");
 }
@@ -12,24 +13,29 @@
     font-family: "Cantarell";
     font-weight: normal;
     font-style: normal;
-    src: url("../fonts/cantarell-regular.woff2") format("woff2"),
-        url("../fonts/cantarell-regular.woff") format("woff"),
-        local("Cantarell");
+    font-display: swap;
+    src: local("Cantarell"),
+        local("Cantarell-Regular"),
+        url("../fonts/cantarell-regular.woff2") format("woff2"),
+        url("../fonts/cantarell-regular.woff") format("woff");
 }
 
 @font-face {
     font-family: "Cantarell";
     font-weight: bold;
     font-style: normal;
-    src: url("../fonts/cantarell-bold.woff2") format("woff2"),
-        url("../fonts/cantarell-bold.woff") format("woff"),
-        local("Cantarell");
+    font-display: swap;
+    src: local("Cantarell"), 
+        local("Cantarell-Bold"),
+        url("../fonts/cantarell-bold.woff2") format("woff2"),
+        url("../fonts/cantarell-bold.woff") format("woff");
 }
 
 @font-face {
     font-family: "Fira Code";
     font-weight: normal;
     font-style: normal;
+    font-display: swap;
     src: url("../fonts/FiraCode-Medium.woff2") format("woff2"),
         url("../fonts/FiraCode-Medium.woff") format("woff");
 }
@@ -38,6 +44,7 @@
     font-family: "Fira Code";
     font-weight: bold;
     font-style: normal;
+    font-display: swap;
     src: url("../fonts/FiraCode-Bold.woff2") format("woff2"),
         url("../fonts/FiraCode-Bold.woff") format("woff");
 }
