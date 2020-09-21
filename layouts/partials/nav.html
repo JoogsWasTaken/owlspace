@@ -1,8 +1,8 @@
 <nav id="menu" role="navigation">
     <ul>
         <li id="menu-burger">
-            <div role="button" id="menu-open" class="menu-button"><img src="{{ "/images/menu-burger.svg" | absURL }}"></div>
-            <div role="button" id="menu-close" class="menu-button"><img src="{{ "/images/menu-close.svg" | absURL }}"></div>
+            <div role="button" id="menu-open" class="menu-button" aria-label="Open main menu"><img src="{{ "/images/menu-burger.svg" | absURL }}" alt="Open menu icon"></div>
+            <div role="button" id="menu-close" class="menu-button" aria-label="Close main menu"><img src="{{ "/images/menu-close.svg" | absURL }}" alt="Close menu icon"></div>
         </li>
         {{ $currentPage := . }}
         {{ if isset site.Data "nav" }}

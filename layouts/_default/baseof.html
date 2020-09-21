@@ -26,6 +26,7 @@
             <meta name="theme-color" content="{{ . }}">
         {{ end }}
         <meta name="color-scheme" content="dark">
+        <meta name="description" content="{{ .Description | default .Site.Params.Description }}">
         {{ template "_internal/opengraph.html" . }}
         {{ template "_internal/twitter_cards.html" . }}        
     </head>
