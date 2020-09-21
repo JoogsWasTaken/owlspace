@@ -19,7 +19,7 @@ article {
     }
 
     // make overflowing equations scrollable
-    > .katex-display {
+    .katex-display {
         overflow-x: auto;
     }
 
