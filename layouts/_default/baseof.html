@@ -19,6 +19,14 @@
         {{/* for internal use */}}
         {{ block "css" . }}{{ end }}
 
+        {{/* rss */}}
+        <link rel="alternate" type="application/rss+xml" href="{{ "/index.xml" | absURL }}" title="{{ .Site.Title }}">
+        {{ if isset site.Menus "main" }}
+            {{ range sort site.Menus.main "Name" }}
+                <link rel="alternate" type="application/rss+xml" href="{{ .URL }}index.xml" title="{{ .Name }} // {{ site.Title }}">
+            {{ end }}
+        {{ end }}
+
         {{/* meta and seo */}}
         <link rel="icon" href="{{ "/favicon.ico" | absURL }}">
         <meta name="viewport" content="initial-scale=1,width=device-width">
