@@ -1,0 +1,15 @@
+<figure>
+    <video controls>
+        {{ $src := .Get "src" | absURL }}
+        {{ if strings.HasSuffix $src ".webm" }}
+        <source src="{{ $src }}" type="video/webm">
+        {{ else if strings.HasSuffix $src ".mp4" }}
+        <source src="{{ $src }}" type="video/mp4">
+        {{ end }}
+
+        Video playback is not supported in your browser.
+    </video>
+    {{ if .Get "caption" }}
+    <figcaption>{{ .Get "caption" }}</figcaption>
+    {{ end }}
+</figure>

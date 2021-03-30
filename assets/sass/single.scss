@@ -69,6 +69,15 @@ article {
         }
     }
 
+    // quotes
+    > blockquote {
+        margin-left: 0;
+        color: black;
+        background: white;
+        padding: 1em;
+        width: 100%;
+    }
+
     // groups of images
     > figure {
         text-align: center;
@@ -82,6 +91,10 @@ article {
         img {
             max-width: 100%;
             height: auto;
+        }
+        
+        video {
+            max-width: 100%;
         }
 
         figcaption {
